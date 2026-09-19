@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Assessment - AI Career System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career System
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Assessment -->
+
+    <section class="assessment">
+
+        <h1>Student Assessment</h1>
+
+        <p>
+            Provide information about your academic performance,
+            technical skills, interests and career preferences.
+        </p>
+
+
+        <form action="/assessment" method="POST">
+
+
+            <!-- ========================= -->
+            <!-- 1. ACADEMIC INFORMATION -->
+            <!-- ========================= -->
+
+            <h2>1. Academic Information</h2>
+
+
+            <label for="course">
+                Course
+            </label>
+
+            <select name="course" id="course" required>
+
+                <option value="">
+                    Select your course
+                </option>
+
+                <option value="BSc Computer Science">
+                    BSc Computer Science
+                </option>
+
+                <option value="BSc Information Technology">
+                    BSc Information Technology
+                </option>
+
+                <option value="BCA">
+                    BCA
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label for="semester">
+                Semester
+            </label>
+
+            <input
+                type="number"
+                name="semester"
+                id="semester"
+                min="1"
+                max="8"
+                placeholder="Enter semester"
+                required
+            >
+
+
+            <label for="overall_percentage">
+                Overall Percentage
+            </label>
+
+            <input
+                type="number"
+                name="overall_percentage"
+                id="overall_percentage"
+                min="0"
+                max="100"
+                step="0.01"
+                placeholder="Example: 82.50"
+                required
+            >
+
+
+            <label for="programming_marks">
+                Programming Marks (%)
+            </label>
+
+            <input
+                type="number"
+                name="programming_marks"
+                id="programming_marks"
+                min="0"
+                max="100"
+                placeholder="Example: 85"
+                required
+            >
+
+
+            <label for="maths_marks">
+                Mathematics Marks (%)
+            </label>
+
+            <input
+                type="number"
+                name="maths_marks"
+                id="maths_marks"
+                min="0"
+                max="100"
+                placeholder="Example: 75"
+                required
+            >
+
+
+            <label for="database_marks">
+                Database Marks (%)
+            </label>
+
+            <input
+                type="number"
+                name="database_marks"
+                id="database_marks"
+                min="0"
+                max="100"
+                placeholder="Example: 80"
+                required
+            >
+
+
+            <label for="os_marks">
+                Operating Systems Marks (%)
+            </label>
+
+            <input
+                type="number"
+                name="os_marks"
+                id="os_marks"
+                min="0"
+                max="100"
+                placeholder="Example: 78"
+                required
+            >
+
+
+            <label for="network_marks">
+                Computer Networks Marks (%)
+            </label>
+
+            <input
+                type="number"
+                name="network_marks"
+                id="network_marks"
+                min="0"
+                max="100"
+                placeholder="Example: 72"
+                required
+            >
+
+
+            <label for="projects_completed">
+                Programming Projects Completed
+            </label>
+
+            <input
+                type="number"
+                name="projects_completed"
+                id="projects_completed"
+                min="0"
+                placeholder="Example: 3"
+                required
+            >
+
+
+
+            <!-- ========================= -->
+            <!-- 2. TECHNICAL SKILLS -->
+            <!-- ========================= -->
+
+            <h2>2. Technical Skills</h2>
+
+
+            <label for="python">
+                Python
+            </label>
+
+            <select name="python" id="python" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="java">
+                Java
+            </label>
+
+            <select name="java" id="java" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="cpp">
+                C / C++
+            </label>
+
+            <select name="cpp" id="cpp" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="html_css">
+                HTML / CSS
+            </label>
+
+            <select name="html_css" id="html_css" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="javascript">
+                JavaScript
+            </label>
+
+            <select name="javascript" id="javascript" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="sql">
+                SQL
+            </label>
+
+            <select name="sql" id="sql" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="machine_learning">
+                Machine Learning
+            </label>
+
+            <select name="machine_learning" id="machine_learning" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="data_analysis">
+                Data Analysis
+            </label>
+
+            <select name="data_analysis" id="data_analysis" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="git">
+                Git / GitHub
+            </label>
+
+            <select name="git" id="git" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="cloud">
+                Cloud Computing
+            </label>
+
+            <select name="cloud" id="cloud" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+
+            <!-- ========================= -->
+            <!-- 3. SOFT SKILLS -->
+            <!-- ========================= -->
+
+            <h2>3. Soft Skills</h2>
+
+
+            <label for="communication">
+                Communication
+            </label>
+
+            <select name="communication" id="communication" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="problem_solving">
+                Problem Solving
+            </label>
+
+            <select name="problem_solving" id="problem_solving" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="teamwork">
+                Teamwork
+            </label>
+
+            <select name="teamwork" id="teamwork" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="leadership">
+                Leadership
+            </label>
+
+            <select name="leadership" id="leadership" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="critical_thinking">
+                Critical Thinking
+            </label>
+
+            <select name="critical_thinking" id="critical_thinking" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="creativity">
+                Creativity
+            </label>
+
+            <select name="creativity" id="creativity" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+            <label for="time_management">
+                Time Management
+            </label>
+
+            <select name="time_management" id="time_management" required>
+                <option value="">Select level</option>
+                <option value="1">Beginner</option>
+                <option value="2">Basic</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Advanced</option>
+                <option value="5">Expert</option>
+            </select>
+
+
+
+            <!-- ========================= -->
+            <!-- 4. INTERESTS -->
+            <!-- ========================= -->
+
+            <h2>4. Career Interest</h2>
+
+
+            <label for="interest">
+                Primary Career Interest
+            </label>
+
+            <select name="interest" id="interest" required>
+
+                <option value="">
+                    Select your interest
+                </option>
+
+                <option value="Artificial Intelligence">
+                    Artificial Intelligence
+                </option>
+
+                <option value="Data Science">
+                    Data Science
+                </option>
+
+                <option value="Web Development">
+                    Web Development
+                </option>
+
+                <option value="Software Development">
+                    Software Development
+                </option>
+
+                <option value="Cyber Security">
+                    Cyber Security
+                </option>
+
+                <option value="Cloud Computing">
+                    Cloud Computing
+                </option>
+
+                <option value="Database">
+                    Database Administration
+                </option>
+
+                <option value="Mobile Development">
+                    Mobile App Development
+                </option>
+
+                <option value="UI UX">
+                    UI / UX Design
+                </option>
+
+                <option value="Networking">
+                    Networking
+                </option>
+
+            </select>
+
+
+
+            <!-- ========================= -->
+            <!-- 5. CAREER PREFERENCES -->
+            <!-- ========================= -->
+
+            <h2>5. Career Preferences</h2>
+
+
+            <label for="work_type">
+                What type of work do you prefer?
+            </label>
+
+            <select name="work_type" id="work_type" required>
+
+                <option value="">
+                    Select preference
+                </option>
+
+                <option value="Programming">
+                    Programming
+                </option>
+
+                <option value="Data">
+                    Working with Data
+                </option>
+
+                <option value="Design">
+                    Designing Websites / Applications
+                </option>
+
+                <option value="Security">
+                    Security
+                </option>
+
+                <option value="Networking">
+                    Networking
+                </option>
+
+                <option value="Research">
+                    Research
+                </option>
+
+                <option value="Management">
+                    Managing Projects
+                </option>
+
+            </select>
+
+
+            <label for="work_environment">
+                Preferred Work Environment
+            </label>
+
+            <select name="work_environment" id="work_environment" required>
+
+                <option value="">
+                    Select environment
+                </option>
+
+                <option value="Office">
+                    Office
+                </option>
+
+                <option value="Remote">
+                    Remote
+                </option>
+
+                <option value="Hybrid">
+                    Hybrid
+                </option>
+
+            </select>
+
+
+            <label for="problem_preference">
+                Do you enjoy solving complex problems?
+            </label>
+
+            <select name="problem_preference" id="problem_preference" required>
+
+                <option value="">
+                    Select option
+                </option>
+
+                <option value="Yes">
+                    Yes
+                </option>
+
+                <option value="Sometimes">
+                    Sometimes
+                </option>
+
+                <option value="No">
+                    No
+                </option>
+
+            </select>
+
+
+            <label for="career_goal">
+                Career Goal
+            </label>
+
+            <select name="career_goal" id="career_goal" required>
+
+                <option value="">
+                    Select your goal
+                </option>
+
+                <option value="Job">
+                    Get a Job
+                </option>
+
+                <option value="Higher Studies">
+                    Higher Studies
+                </option>
+
+                <option value="Entrepreneurship">
+                    Start a Business
+                </option>
+
+                <option value="Freelancing">
+                    Freelancing
+                </option>
+
+            </select>
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit" class="btn">
+                Get Career Recommendation
+            </button>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>

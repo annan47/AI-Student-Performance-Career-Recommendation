@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #222;
+}
+
+.navbar {
+    background-color: #1f2937;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #60a5fa;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Assessment Page */
+
+.assessment {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.assessment h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.assessment p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.assessment h2 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.assessment label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.assessment input,
+.assessment select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.assessment input:focus,
+.assessment select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.assessment button {
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Recommendation Page */
+
+.recommendation {
+    text-align: center;
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 40px;
+}
+
+.recommendation h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.recommendation p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.career-result {
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px gray;
+}
+
+.career-result h2 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.assessment-summary {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px gray;
+    text-align: left;
+}
+
+.assessment-summary h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.assessment-summary p {
+    margin: 12px 0;
+}

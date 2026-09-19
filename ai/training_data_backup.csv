@@ -1,0 +1,28 @@
+overall_percentage,programming_marks,maths_marks,database_marks,os_marks,network_marks,projects_completed,python,java,cpp,html_css,javascript,sql_skill,machine_learning,data_analysis,git,cloud,communication,problem_solving,teamwork,leadership,critical_thinking,creativity,time_management,interest,work_type,career_goal,career
+90,92,94,88,82,78,5,5,3,2,3,2,5,5,5,4,3,4,5,4,3,5,4,5,Data Science,Data,Job,Data Scientist
+86,88,91,85,80,75,4,5,2,2,3,2,4,5,5,4,3,4,5,4,3,5,4,4,Data Science,Data,Higher Studies,Data Scientist
+82,85,87,80,76,72,3,4,2,2,3,2,4,4,5,3,3,4,4,4,3,4,4,4,Data Science,Data,Job,Data Scientist
+88,90,89,82,78,74,5,5,2,2,3,3,4,5,4,4,3,5,5,4,3,5,4,5,Artificial Intelligence,Research,Higher Studies,Machine Learning Engineer
+84,86,85,79,75,70,4,5,2,2,3,2,3,5,4,4,3,4,5,4,3,5,4,4,Artificial Intelligence,Programming,Job,Machine Learning Engineer
+91,93,90,86,81,76,6,5,3,2,3,3,5,5,5,5,4,4,5,5,4,5,4,5,Artificial Intelligence,Programming,Job,Machine Learning Engineer
+78,82,75,70,72,68,3,4,4,3,5,5,3,2,2,4,3,4,4,5,3,4,5,4,Web Development,Design,Job,Full Stack Developer
+81,84,78,72,70,65,4,4,3,3,5,5,3,2,2,4,3,5,4,5,4,4,5,4,Web Development,Programming,Job,Full Stack Developer
+75,80,72,68,69,64,2,3,3,3,5,4,2,1,2,3,2,4,4,4,3,4,5,3,Web Development,Design,Freelancing,Full Stack Developer
+83,87,79,74,72,70,4,4,3,3,4,5,3,2,2,5,3,5,5,4,4,5,4,4,Software Development,Programming,Job,Software Developer
+89,91,82,78,75,72,5,4,5,4,4,4,3,2,2,5,3,4,5,5,4,5,4,5,Software Development,Programming,Job,Software Developer
+80,85,76,70,73,68,3,4,4,4,4,4,2,1,2,4,3,4,5,4,4,4,4,4,Software Development,Programming,Freelancing,Software Developer
+79,81,74,84,76,80,3,3,3,3,3,2,5,2,3,4,3,4,5,4,3,5,3,4,Cyber Security,Security,Job,Cyber Security Analyst
+87,89,80,88,79,84,5,4,3,3,3,2,5,3,3,5,4,4,5,4,4,5,3,5,Cyber Security,Security,Job,Cyber Security Analyst
+73,78,70,80,74,82,2,3,2,3,3,2,4,1,2,3,3,4,4,4,3,4,3,3,Cyber Security,Security,Job,Cyber Security Analyst
+82,80,76,92,78,75,3,3,3,3,3,2,5,2,3,4,3,4,4,4,3,5,3,4,Database,Data,Job,Database Administrator
+88,86,79,95,81,77,4,4,3,3,3,2,5,2,4,5,3,4,5,4,4,5,3,5,Database,Data,Job,Database Administrator
+76,75,71,85,74,72,2,3,2,2,3,2,4,1,2,3,2,4,4,3,3,4,3,3,Database,Data,Job,Database Administrator
+85,83,78,75,72,88,4,3,3,3,3,2,3,2,2,4,5,4,5,4,4,5,3,5,Networking,Networking,Job,Network Engineer
+80,79,74,72,70,90,3,3,3,3,3,2,3,2,2,4,5,4,4,5,4,4,3,4,Networking,Networking,Job,Network Engineer
+74,76,69,68,67,84,2,2,2,3,3,2,2,1,2,3,4,4,4,4,3,4,3,3,Networking,Networking,Job,Network Engineer
+86,82,80,74,75,70,4,3,3,2,3,3,3,2,2,4,5,4,4,4,4,5,4,4,Cloud Computing,Networking,Job,Cloud Engineer
+91,88,84,78,80,74,5,4,3,2,3,3,4,2,3,5,5,5,5,4,4,5,4,5,Cloud Computing,Networking,Job,Cloud Engineer
+79,78,73,70,72,68,3,3,2,2,3,2,3,1,2,4,4,4,4,4,3,4,4,3,Cloud Computing,Networking,Job,Cloud Engineer
+72,70,68,65,67,62,2,2,2,2,5,4,2,1,1,2,2,4,3,4,3,3,5,3,UI UX,Design,Freelancing,UI UX Designer
+85,82,75,70,72,65,4,3,2,2,5,4,2,1,2,4,2,5,4,5,4,4,5,4,UI UX,Design,Job,UI UX Designer
+78,76,71,68,70,64,3,3,2,2,5,4,2,1,2,3,2,4,4,4,3,4,5,3,UI UX,Design,Job,UI UX Designer

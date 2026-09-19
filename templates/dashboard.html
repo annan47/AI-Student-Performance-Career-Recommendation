@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - AI Career System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career System
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <section class="hero">
+
+        <h1>Welcome, {{ student_name }} 👋</h1>
+
+        <h2>AI Student Performance & Career Recommendation</h2>
+
+        <p>
+            Analyze your academic performance, skills and interests
+            to discover suitable career paths.
+        </p>
+
+        <a href="/assessment" class="btn">Start Assessment</a>
+        <a href="/my-recommendation" class="btn">
+        View My Recommendation
+        </a>
+
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Recommendation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career System
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assessment">Assessment</a>
+        </div>
+
+    </nav>
+
+
+    <section class="recommendation">
+
+        <h1>🎯 AI Career Recommendation</h1>
+
+        <p>
+            Based on your academic performance, technical skills,
+            soft skills and career interests, our AI model recommends:
+        </p>
+
+        <div class="career-result">
+            <h2>{{ recommended_career }}</h2>
+            <h3>📖 Career Description</h3>
+            <p>
+                {{ description }}
+            </p>
+
+            <h3>🛠️ Important Skills</h3>
+            <p>
+                {{ skills }}
+            </p>
+
+            <h3>🚀 Suggested Next Step</h3>
+            <p>
+                {{ next_step }}
+            </p>
+        </div>
+
+        <div class="assessment-summary">
+
+            <h2>📊 Your Assessment Summary</h2>
+
+            <p>
+                <strong>Course:</strong>
+                {{ assessment.course }}
+            </p>
+
+            <p>
+                <strong>Semester:</strong>
+                {{ assessment.semester }}
+            </p>
+
+            <p>
+                <strong>Overall Percentage:</strong>
+                {{ assessment.overall_percentage }}%
+            </p>
+
+            <p>
+                <strong>Programming Marks:</strong>
+                {{ assessment.programming_marks }}
+            </p>
+
+            <p>
+                <strong>Maths Marks:</strong>
+                {{ assessment.maths_marks }}
+            </p>
+
+            <p>
+                <strong>Database Marks:</strong>
+                {{ assessment.database_marks }}
+            </p>
+
+            <p>
+                <strong>Projects Completed:</strong>
+                {{ assessment.projects_completed }}
+            </p>
+
+        </div>
+
+        <p>
+            This recommendation was generated using our
+            Machine Learning model.
+        </p>
+
+        <a href="/dashboard" class="btn">
+            Back to Dashboard
+        </a>
+
+    </section>
+
+</body>
+</html>
