@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career Recommendation
+        </div>
+
+        <div class="nav-links">
+            <a href="/admin-dashboard">Dashboard</a>
+            <a href="/admin-students">Students</a>
+            <a href="/admin-assessments">Assessments</a>
+            <a href="/admin-recommendations">Recommendations</a>
+            <a href="/admin-logout">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <div class="assessment-detail">
+
+        <div class="admin-page-header">
+
+            <div class="admin-page-icon">
+                📊
+            </div>
+
+            <h1>Assessment Details</h1>
+
+            <p>
+                Assessment #{{ assessment.assessment_id }}
+            </p>
+
+        </div>
+
+
+        <!-- Student Information -->
+
+        <div class="detail-card">
+
+            <h2>👨‍🎓 Student Information</h2>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Student Name</span>
+                    <strong>{{ assessment.student_name }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Email</span>
+                    <strong>{{ assessment.student_email }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Course</span>
+                    <strong>{{ assessment.course }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Semester</span>
+                    <strong>{{ assessment.semester }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Academic Performance -->
+
+        <div class="detail-card">
+
+            <h2>📚 Academic Performance</h2>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Overall Percentage</span>
+                    <strong>{{ assessment.overall_percentage }}%</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Programming Marks</span>
+                    <strong>{{ assessment.programming_marks }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Mathematics Marks</span>
+                    <strong>{{ assessment.maths_marks }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Database Marks</span>
+                    <strong>{{ assessment.database_marks }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Operating Systems Marks</span>
+                    <strong>{{ assessment.os_marks }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Networking Marks</span>
+                    <strong>{{ assessment.network_marks }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Projects Completed</span>
+                    <strong>{{ assessment.projects_completed }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Technical Skills -->
+
+        <div class="detail-card">
+
+            <h2>💻 Technical Skills</h2>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Python</span>
+                    <strong>{{ assessment.python }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Java</span>
+                    <strong>{{ assessment.java }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>C++</span>
+                    <strong>{{ assessment.cpp }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>HTML & CSS</span>
+                    <strong>{{ assessment.html_css }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>JavaScript</span>
+                    <strong>{{ assessment.javascript }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>SQL</span>
+                    <strong>{{ assessment.sql_skill }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Machine Learning</span>
+                    <strong>{{ assessment.machine_learning }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Data Analysis</span>
+                    <strong>{{ assessment.data_analysis }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Git</span>
+                    <strong>{{ assessment.git }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Cloud</span>
+                    <strong>{{ assessment.cloud }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Soft Skills -->
+
+        <div class="detail-card">
+
+            <h2>🤝 Soft Skills</h2>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Communication</span>
+                    <strong>{{ assessment.communication }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Problem Solving</span>
+                    <strong>{{ assessment.problem_solving }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Teamwork</span>
+                    <strong>{{ assessment.teamwork }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Leadership</span>
+                    <strong>{{ assessment.leadership }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Critical Thinking</span>
+                    <strong>{{ assessment.critical_thinking }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Creativity</span>
+                    <strong>{{ assessment.creativity }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Time Management</span>
+                    <strong>{{ assessment.time_management }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Career Preferences -->
+
+        <div class="detail-card">
+
+            <h2>🎯 Career Preferences</h2>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Career Interest</span>
+                    <strong>{{ assessment.interest }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Preferred Work Type</span>
+                    <strong>{{ assessment.work_type }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Work Environment</span>
+                    <strong>{{ assessment.work_environment }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Problem Preference</span>
+                    <strong>{{ assessment.problem_preference }}</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Career Goal</span>
+                    <strong>{{ assessment.career_goal }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI Recommendation -->
+
+        <div class="ai-recommendation-card">
+
+            <div class="ai-icon">
+                🤖
+            </div>
+
+            <h2>AI Career Recommendation</h2>
+
+            <p class="recommended-career">
+                {{ assessment.recommended_career or "Not generated" }}
+            </p>
+
+            <p>
+                This recommendation was generated by the machine learning
+                model based on the student's assessment responses.
+            </p>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <div class="detail-actions">
+
+            <a href="/admin-assessments" class="btn">
+                ← Back to Assessments
+            </a>
+
+            <a href="/admin-dashboard" class="btn">
+                🏠 Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

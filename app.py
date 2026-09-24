@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "student-career-secret-key"
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 # Load trained AI model and preprocessor
 model = joblib.load("ai/career_model.pkl")
@@ -314,6 +314,18 @@ def assessment():
             )
         """
 
+        update_student_query = """
+        UPDATE students
+        SET course = %s,
+            semester = %s
+        WHERE student_id = %s
+    """
+
+        cursor.execute(
+        update_student_query,
+        (course, semester, session["student_id"])
+    )
+
 
         values = (
             session["student_id"],
@@ -424,12 +436,376 @@ def my_recommendation():
     assessment=assessment
 )
 
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        query = """
+            SELECT *
+            FROM admins
+            WHERE username = %s
+        """
+
+        cursor.execute(query, (username,))
+
+        admin = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        if admin is None:
+            return "Admin username not found!"
+
+        if check_password_hash(admin["password_hash"], password):
+
+            session["admin_id"] = admin["admin_id"]
+            session["admin_username"] = admin["username"]
+
+            return redirect("/admin-dashboard")
+
+        else:
+            return "Incorrect admin password!"
+
+    return render_template("admin_login.html")
+
+@app.route("/admin-dashboard")
+def admin_dashboard():
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    # Count total students
+    cursor.execute("SELECT COUNT(*) AS total_students FROM students")
+    total_students = cursor.fetchone()["total_students"]
+
+    # Count total assessments
+    cursor.execute("SELECT COUNT(*) AS total_assessments FROM assessments")
+    total_assessments = cursor.fetchone()["total_assessments"]
+
+    # Count total AI recommendations
+    cursor.execute("""
+        SELECT COUNT(*) AS total_recommendations
+        FROM assessments
+        WHERE recommended_career IS NOT NULL
+    """)
+
+    total_recommendations = cursor.fetchone()["total_recommendations"]
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "admin_dashboard.html",
+        admin_username=session["admin_username"],
+        total_students=total_students,
+        total_assessments=total_assessments,
+        total_recommendations=total_recommendations
+    )
+
+@app.route("/admin-students")
+def admin_students():
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    search = request.args.get("search", "")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    if search:
+
+        query = """
+            SELECT
+                student_id,
+                name,
+                email,
+                course,
+                semester,
+                created_at
+            FROM students
+            WHERE name LIKE %s
+               OR email LIKE %s
+            ORDER BY student_id DESC
+        """
+
+        search_value = "%" + search + "%"
+
+        cursor.execute(
+            query,
+            (search_value, search_value)
+        )
+
+    else:
+
+        query = """
+        SELECT
+        s.student_id,
+        s.name,
+        s.email,
+        s.course,
+        s.semester,
+        s.created_at,
+        COUNT(a.assessment_id) AS assessment_count
+        FROM students s
+        LEFT JOIN assessments a
+        ON s.student_id = a.student_id
+        GROUP BY
+        s.student_id,
+        s.name,
+        s.email,
+        s.course,
+        s.semester,
+        s.created_at
+        ORDER BY s.student_id DESC
+    """
+
+        cursor.execute(query)
+
+    students = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "admin_students.html",
+        students=students,
+        search=search
+    )
+
+@app.route("/admin-student/<int:student_id>/assessments")
+def admin_student_assessments(student_id):
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = """
+        SELECT
+            a.assessment_id,
+            s.name AS student_name,
+            s.email AS student_email,
+            a.course,
+            a.semester,
+            a.overall_percentage,
+            a.projects_completed,
+            a.interest,
+            a.recommended_career
+        FROM assessments a
+        JOIN students s
+            ON a.student_id = s.student_id
+        WHERE s.student_id = %s
+        ORDER BY a.assessment_id DESC
+    """
+
+    cursor.execute(query, (student_id,))
+
+    assessments = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "admin_student_assessments.html",
+        assessments=assessments
+    )
+
+@app.route("/admin-assessments")
+def admin_assessments():
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    search = request.args.get("search", "")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    if search:
+
+        query = """
+            SELECT
+                a.assessment_id,
+                s.name AS student_name,
+                a.course,
+                a.semester,
+                a.overall_percentage,
+                a.projects_completed,
+                a.interest,
+                a.recommended_career
+            FROM assessments a
+            JOIN students s
+                ON a.student_id = s.student_id
+            WHERE s.name LIKE %s
+            ORDER BY a.assessment_id DESC
+        """
+
+        search_value = "%" + search + "%"
+
+        cursor.execute(
+            query,
+            (search_value,)
+        )
+
+    else:
+
+        query = """
+            SELECT
+                a.assessment_id,
+                s.name AS student_name,
+                a.course,
+                a.semester,
+                a.overall_percentage,
+                a.projects_completed,
+                a.interest,
+                a.recommended_career
+            FROM assessments a
+            JOIN students s
+                ON a.student_id = s.student_id
+            ORDER BY a.assessment_id DESC
+        """
+
+        cursor.execute(query)
+
+    assessments = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "admin_assessments.html",
+        assessments=assessments,
+        search=search
+    )
+
+@app.route("/admin-recommendations")
+def admin_recommendations():
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    search = request.args.get("search", "")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    if search:
+
+        query = """
+            SELECT
+                a.assessment_id,
+                s.name AS student_name,
+                a.overall_percentage,
+                a.interest,
+                a.recommended_career
+            FROM assessments a
+            JOIN students s
+                ON a.student_id = s.student_id
+            WHERE a.recommended_career IS NOT NULL
+              AND (
+                    s.name LIKE %s
+                    OR a.recommended_career LIKE %s
+                  )
+            ORDER BY a.assessment_id DESC
+        """
+
+        search_value = "%" + search + "%"
+
+        cursor.execute(
+            query,
+            (search_value, search_value)
+        )
+
+    else:
+
+        query = """
+            SELECT
+                a.assessment_id,
+                s.name AS student_name,
+                a.overall_percentage,
+                a.interest,
+                a.recommended_career
+            FROM assessments a
+            JOIN students s
+                ON a.student_id = s.student_id
+            WHERE a.recommended_career IS NOT NULL
+            ORDER BY a.assessment_id DESC
+        """
+
+        cursor.execute(query)
+
+    recommendations = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template(
+        "admin_recommendations.html",
+        recommendations=recommendations,
+        search=search
+    )
+
+@app.route("/admin-assessment/<int:assessment_id>")
+def admin_assessment_detail(assessment_id):
+
+    if "admin_id" not in session:
+        return redirect("/admin-login")
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = """
+        SELECT
+            a.*,
+            s.name AS student_name,
+            s.email AS student_email
+        FROM assessments a
+        JOIN students s
+            ON a.student_id = s.student_id
+        WHERE a.assessment_id = %s
+    """
+
+    cursor.execute(query, (assessment_id,))
+
+    assessment = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    if assessment is None:
+        return "Assessment not found!"
+
+    return render_template(
+        "admin_assessment_detail.html",
+        assessment=assessment
+    )
+
 @app.route("/logout")
 def logout():
 
     session.clear()
 
     return redirect("/login")
+
+@app.route("/admin-logout")
+def admin_logout():
+
+    session.pop("admin_id", None)
+    session.pop("admin_username", None)
+
+    return redirect("/admin-login")
 
 if __name__ == "__main__":
     app.run(debug=True)

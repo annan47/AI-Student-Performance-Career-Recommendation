@@ -28,21 +28,38 @@
     </nav>
 
 
-    <section class="hero">
+    <section class="hero dashboard-hero">
 
-        <h1>Welcome, {{ student_name }} 👋</h1>
+        <div class="dashboard-content">
 
-        <h2>AI Student Performance & Career Recommendation</h2>
+            <div class="dashboard-icon">
+                🎓
+            </div>
 
-        <p>
-            Analyze your academic performance, skills and interests
-            to discover suitable career paths.
-        </p>
+            <h1>Welcome, {{ student_name }} 👋</h1>
 
-        <a href="/assessment" class="btn">Start Assessment</a>
-        <a href="/my-recommendation" class="btn">
-        View My Recommendation
-        </a>
+            <h2>
+                AI Student Performance & Career Recommendation
+            </h2>
+
+            <p>
+                Analyze your academic performance, skills and interests
+                to discover suitable career paths.
+            </p>
+
+            <div class="dashboard-actions">
+
+                <a href="/assessment" class="btn">
+                    📝 Start Assessment
+                </a>
+
+                <a href="/my-recommendation" class="btn">
+                    🤖 View My Recommendation
+                </a>
+
+            </div>
+
+        </div>
 
     </section>
 

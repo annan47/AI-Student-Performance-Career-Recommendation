@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Login - AI Career System</title>
+    <title>Admin Login - AI Career System</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
@@ -21,27 +21,33 @@
 
         <div class="nav-links">
             <a href="/">Home</a>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
+            <a href="/login">Student Login</a>
         </div>
 
     </nav>
 
-    <section class="login-container">
+    <section class="admin-login-container">
 
-        <h1>Welcome Back 👋</h1>
+        <div class="admin-login-icon">
+            🔐
+        </div>
 
-        <p>Login to access your career recommendation dashboard.</p>
+        <h1>Admin Login</h1>
 
-        <form method="POST" action="/login">
+        <p>
+            Login to manage students, assessments and
+            AI career recommendations.
+        </p>
 
-            <label for="email">Email Address</label>
+        <form method="POST" action="/admin-login">
+
+            <label for="username">Username</label>
 
             <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter admin username"
                 required
             >
 
@@ -51,20 +57,15 @@
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Enter admin password"
                 required
             >
 
             <button type="submit" class="btn">
-                Login
+                Login to Admin Panel
             </button>
 
         </form>
-
-        <p class="login-register-text">
-            Don't have an account?
-            <a href="/register">Create an account</a>
-        </p>
 
     </section>
 

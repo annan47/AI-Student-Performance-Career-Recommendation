@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - AI Career System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career System
+        </div>
+
+        <div class="nav-links">
+            <a href="/admin-dashboard">Dashboard</a>
+            <a href="/admin-students">Students</a>
+            <a href="/admin-assessments">Assessments</a>
+            <a href="/admin-logout">Logout</a>
+        </div>
+
+    </nav>
+
+    <section class="admin-dashboard">
+
+        <div class="admin-welcome">
+
+            <div class="admin-badge">
+                🔐 Administrator Panel
+            </div>
+
+            <h1>
+                Welcome, {{ admin_username }} 👋
+            </h1>
+
+            <p>
+                Manage students, assessments and AI career
+                recommendations from one place.
+            </p>
+
+        </div>
+
+
+        <div class="admin-stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">👨‍🎓</div>
+                <h3>Total Students</h3>
+                <p>{{ total_students }}</p>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <h3>Total Assessments</h3>
+                <p>{{ total_assessments }}</p>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <h3>AI Recommendations</h3>
+                <p>{{ total_recommendations }}</p>
+            </div>
+
+        </div>
+
+
+        <div class="admin-actions">
+
+            <a href="/admin-students" class="admin-action-card">
+
+                <div class="action-icon">
+                    👨‍🎓
+                </div>
+
+                <h3>Manage Students</h3>
+
+                <p>
+                    View and search registered students.
+                </p>
+
+            </a>
+
+
+            <a href="/admin-assessments" class="admin-action-card">
+
+                <div class="action-icon">
+                    📊
+                </div>
+
+                <h3>View Assessments</h3>
+
+                <p>
+                    View student assessments and results.
+                </p>
+
+            </a>
+
+
+            <a href="/admin-recommendations" class="admin-action-card">
+
+                <div class="action-icon">
+                    🤖
+                </div>
+
+                <h3>AI Recommendations</h3>
+
+                <p>
+                    View AI-generated career recommendations.
+                </p>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

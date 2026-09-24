@@ -7,7 +7,8 @@
 
     <title>AI Student Career System</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -26,21 +27,77 @@
 
     </nav>
 
+    <section class="home-hero">
 
-    <section class="hero">
+        <div class="home-content">
 
-        <h1>AI-Based Student Performance Analysis</h1>
+            <div class="home-badge">
+                🤖 AI-Powered Career Guidance
+            </div>
 
-        <h2>Career Recommendation System</h2>
+            <h1>
+                AI-Based Student Performance
+                <span>Analysis & Career Recommendation</span>
+            </h1>
 
-        <p>
-            Analyze your academic performance, skills and interests
-            using Artificial Intelligence.
+            <p>
+                Analyze your academic performance, technical skills,
+                soft skills and interests using Artificial Intelligence
+                to receive a personalized career recommendation.
+            </p>
+
+            <div class="home-buttons">
+
+                <a href="/register" class="btn">
+                    Get Started 🚀
+                </a>
+
+                <a href="/login" class="home-login-btn">
+                    Already Registered? Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="home-features">
+
+        <h2>How It Works</h2>
+
+        <p class="features-intro">
+            Our system analyzes different aspects of your profile
+            to generate a career recommendation.
         </p>
 
-        <a href="/register" class="btn">
-            Get Started
-        </a>
+        <div class="feature-cards">
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Performance Analysis</h3>
+                <p>
+                    Analyze your academic performance and project experience.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>Skill Assessment</h3>
+                <p>
+                    Evaluate your technical and soft skills.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Recommendation</h3>
+                <p>
+                    Get a career recommendation based on your assessment.
+                </p>
+            </div>
+
+        </div>
 
     </section>
 

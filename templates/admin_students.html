@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registered Students - AI Career System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career System
+        </div>
+
+        <div class="nav-links">
+            <a href="/admin-dashboard">Dashboard</a>
+            <a href="/admin-students">Students</a>
+            <a href="/admin-assessments">Assessments</a>
+            <a href="/admin-logout">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <section class="admin-students">
+
+        <div class="admin-page-header">
+
+            <div class="admin-page-icon">
+                👨‍🎓
+            </div>
+
+            <h1>Registered Students</h1>
+
+            <p>
+                View and search all students registered in the system.
+            </p>
+
+        </div>
+
+
+        <form method="GET"
+              action="/admin-students"
+              class="search-form">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search by name or email"
+                value="{{ search }}"
+            >
+
+            <button type="submit" class="btn">
+                🔍 Search
+            </button>
+
+            {% if search %}
+
+                <a href="/admin-students" class="btn clear-btn">
+                    ✖ Clear
+                </a>
+
+            {% endif %}
+
+        </form>
+
+
+        <div class="student-table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Semester</th>
+                        <th>Assessments</th>
+                        <th>Action</th>
+                        <th>Registered On</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for student in students %}
+
+                    <tr>
+
+                        <td>
+                            {{ student.student_id }}
+                        </td>
+
+                        <td class="student-name">
+                            {{ student.name }}
+                        </td>
+
+                        <td>
+                            {{ student.email }}
+                        </td>
+
+                        <td>
+                            {{ student.course or "Not provided" }}
+                        </td>
+
+                        <td>
+                            {{ student.semester or "Not provided" }}
+                        </td>
+
+                        <td>
+
+                            <span class="assessment-count">
+                                {{ student.assessment_count }}
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="/admin-student/{{ student.student_id }}/assessments"
+                                class="btn table-btn"
+                            >
+                                View Assessments
+                            </a>
+
+                        </td>
+
+                        <td>
+                            {{ student.created_at }}
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td colspan="8" class="no-students">
+                            No students found.
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

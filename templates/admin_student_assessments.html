@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assessments</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI Career Recommendation
+        </div>
+
+        <div class="nav-links">
+            <a href="/admin-dashboard">Dashboard</a>
+            <a href="/admin-students">Students</a>
+            <a href="/admin-assessments">Assessments</a>
+            <a href="/admin-recommendations">Recommendations</a>
+            <a href="/admin-logout">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <div class="admin-students">
+
+        <div class="admin-page-header">
+
+            <div class="admin-page-icon">
+                📋
+            </div>
+
+            <h1>Student Assessments</h1>
+
+            {% if assessments %}
+                <p>
+                    Assessments completed by
+                    <strong>{{ assessments[0].student_name }}</strong>
+                </p>
+            {% else %}
+                <p>
+                    No assessments found for this student.
+                </p>
+            {% endif %}
+
+        </div>
+
+
+        {% if assessments %}
+
+            <div class="student-info-card">
+
+                <div>
+                    <strong>Student:</strong>
+                    {{ assessments[0].student_name }}
+                </div>
+
+                <div>
+                    <strong>Email:</strong>
+                    {{ assessments[0].student_email }}
+                </div>
+
+                <div>
+                    <strong>Total Assessments:</strong>
+                    {{ assessments|length }}
+                </div>
+
+            </div>
+
+
+            <div class="student-table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Assessment ID</th>
+                            <th>Course</th>
+                            <th>Semester</th>
+                            <th>Percentage</th>
+                            <th>Projects</th>
+                            <th>Interest</th>
+                            <th>AI Recommendation</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for assessment in assessments %}
+
+                        <tr>
+
+                            <td>
+                                <a
+                                    href="/admin-assessment/{{ assessment.assessment_id }}"
+                                    class="assessment-id">
+                                    #{{ assessment.assessment_id }}
+                                </a>
+                            </td>
+
+                            <td>
+                                {{ assessment.course }}
+                            </td>
+
+                            <td>
+                                {{ assessment.semester }}
+                            </td>
+
+                            <td>
+                                <span class="percentage-badge">
+                                    {{ assessment.overall_percentage }}%
+                                </span>
+                            </td>
+
+                            <td>
+                                {{ assessment.projects_completed }}
+                            </td>
+
+                            <td>
+                                {{ assessment.interest }}
+                            </td>
+
+                            <td>
+                                {% if assessment.recommended_career %}
+                                    <span class="career-badge">
+                                        {{ assessment.recommended_career }}
+                                    </span>
+                                {% else %}
+                                    <span>
+                                        Not generated
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        {% else %}
+
+            <div class="no-students">
+                <p>No assessments available.</p>
+            </div>
+
+        {% endif %}
+
+
+        <div style="margin-top: 30px;">
+
+            <a href="/admin-students" class="btn">
+                ← Back to Students
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
